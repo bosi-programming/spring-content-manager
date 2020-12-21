@@ -7,11 +7,19 @@ public class Post {
   @Id
   private String id;
 
+  private String mainAccount;
   private String author;
   private LocalDate date;
   private String title;
   private String content;
 
+  public String getMainAccount() {
+    return mainAccount;
+  }
+
+  public void setMainAccount(String mainAccount) {
+    this.mainAccount = mainAccount;
+  }
   public String getAuthor() {
     return author;
   }
