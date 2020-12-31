@@ -8,12 +8,21 @@ public class Post {
   private String id;
 
   private String author;
+  private String mainAccount;
   private LocalDate date;
   private String title;
   private String content;
 
   public String getAuthor() {
     return author;
+  }
+
+  public String getMainAccount() {
+    return mainAccount;
+  }
+
+  public void setMainAccount(String mainAccount) {
+    this.mainAccount = mainAccount;
   }
 
   public void setAuthor(String author) {
