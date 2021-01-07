@@ -9,4 +9,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "posts", path = "posts")
 public interface PostRepository extends MongoRepository<Post, String> {
   List<Post> findByTitle(@Param("title") String title);
+
+  List<Post> findByAuthor(@Param("author") String author);
 }
