@@ -1,4 +1,4 @@
-package postsservice;
+package postsservice.domain;
 
 import java.time.LocalDate;
 import org.springframework.data.annotation.Id;

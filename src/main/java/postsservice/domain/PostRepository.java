@@ -1,4 +1,4 @@
-package postsservice;
+package postsservice.domain;
 
 import java.util.List;
 

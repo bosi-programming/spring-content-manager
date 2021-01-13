@@ -1,7 +1,7 @@
 package postsservice.web;
 
-import postsservice.Post;
-import postsservice.PostRepository;
+import postsservice.domain.Post;
+import postsservice.domain.PostRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,5 +17,3 @@ public class PostController {
     return repository.findAll();
   }
 }
-
-
