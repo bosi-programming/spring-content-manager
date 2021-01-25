@@ -8,6 +8,7 @@ public class Post {
   private String id;
 
   private String author;
+  private String authorUserName;
   private String mainAccount;
   private LocalDate date;
   private String title;
@@ -51,6 +52,14 @@ public class Post {
 
   public void setContent(String content) {
     this.content = content;
+  }
+
+  public String getAuthorUserName() {
+    return authorUserName;
+  }
+
+  public void setAuthorUserName(String authorUserName) {
+    this.authorUserName = authorUserName;
   }
 
 }
