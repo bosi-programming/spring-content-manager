@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import postsservice.domain.AccountCredentials;
@@ -35,9 +36,9 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
   }
 
   @Override
-  protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain,
-      Authentication auth) throws IOException, ServletException {
+  @ResponseBody
+  protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res,
+      FilterChain chain, Authentication auth) throws IOException, ServletException {
     AuthenticationService.addToken(res, auth.getName());
   }
 }
-
