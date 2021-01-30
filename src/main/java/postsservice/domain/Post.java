@@ -7,7 +7,6 @@ public class Post {
   @Id
   private String id;
 
-  private String mainAccount;
   private String author;
   private String authorUserName;
   private String mainAccount;
@@ -15,13 +14,6 @@ public class Post {
   private String title;
   private String content;
 
-  public String getMainAccount() {
-    return mainAccount;
-  }
-
-  public void setMainAccount(String mainAccount) {
-    this.mainAccount = mainAccount;
-  }
   public String getAuthor() {
     return author;
   }
