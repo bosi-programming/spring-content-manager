@@ -11,6 +11,9 @@ import java.util.Date;
 
 import static java.util.Collections.emptyList;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class AuthenticationService {
   static final long EXPIRATIONTIME = 864_000_00; // 1 day in milliseconds
   static final String SIGNINGKEY = "SecretKey";
@@ -21,7 +24,12 @@ public class AuthenticationService {
     String JwtToken = Jwts.builder().setSubject(username)
         .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
         .signWith(SignatureAlgorithm.HS512, SIGNINGKEY).compact();
-    res.addHeader("Authorization", PREFIX + " " + JwtToken);
+    res.setContentType("application/json");
+    try {
+    res.getWriter().write("{ \"token\": \"" + JwtToken + "\"}");
+    } catch(IOException exception) {
+      System.out.println(exception);
+    }
     res.addHeader("Access-Control-Expose-Headers", "Authorization");
   }
 
