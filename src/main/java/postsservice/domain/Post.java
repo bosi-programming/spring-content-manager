@@ -7,7 +7,7 @@ public class Post {
   @Id
   private String id;
 
-  private String author;
+  private String authorName;
   private String authorUserName;
   private String mainAccount;
   private LocalDate date;
@@ -15,7 +15,7 @@ public class Post {
   private String content;
 
   public String getAuthor() {
-    return author;
+    return authorName;
   }
 
   public String getMainAccount() {
@@ -26,8 +26,8 @@ public class Post {
     this.mainAccount = mainAccount;
   }
 
-  public void setAuthor(String author) {
-    this.author = author;
+  public void setAuthor(String authorName) {
+    this.authorName = authorName;
   }
 
   public LocalDate getDate() {
