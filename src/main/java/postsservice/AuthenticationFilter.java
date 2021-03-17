@@ -13,15 +13,18 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
 
 import postsservice.service.AuthenticationService;
+import postsservice.service.VerifyTokenService;
 
 public class AuthenticationFilter extends GenericFilterBean {
+  private VerifyTokenService verifyToken = new VerifyTokenService();
+
   @Override
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
-    Authentication authentication = AuthenticationService.getAuthentication((HttpServletRequest)request);
+    verifyToken.verifyToken((HttpServletRequest)request);
 
-    SecurityContextHolder.getContext().
-        setAuthentication(authentication);
-    filterChain.doFilter(request, response);
+    // SecurityContextHolder.getContext().
+       // setAuthentication(authentication);
+    // filterChain.doFilter(request, response);
   }
 }
 
