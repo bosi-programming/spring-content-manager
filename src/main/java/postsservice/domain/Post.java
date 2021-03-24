@@ -1,6 +1,8 @@
 package postsservice.domain;
 
 import java.time.LocalDate;
+import java.util.Map;
+
 import org.springframework.data.annotation.Id;
 
 public class Post {
@@ -14,7 +16,31 @@ public class Post {
   private String title;
   private String content;
 
-  public String getAuthor() {
+  public Post() {
+  }
+
+  public Post(User user, Map<String, Object> postJson) {
+    super();
+    this.authorName = user.getAuthorName();
+    this.authorUserName = user.getUsername();
+    this.mainAccount = user.getMainAccount();
+    this.date = LocalDate.parse(postJson.get("date").toString());
+    this.title = postJson.get("title") != null ? postJson.get("title").toString() : null;
+    this.content = postJson.get("content") != null ? postJson.get("content").toString() : null;
+  }
+
+  public Post(String id, String authorName, String authorUserName, String mainAccount, LocalDate date, String title,
+      String content) {
+    super();
+    this.authorName = authorName;
+    this.authorUserName = authorUserName;
+    this.mainAccount = mainAccount;
+    this.date = date;
+    this.title = title;
+    this.content = content;
+  }
+
+  public String getAuthorName() {
     return authorName;
   }
 
@@ -26,7 +52,7 @@ public class Post {
     this.mainAccount = mainAccount;
   }
 
-  public void setAuthor(String authorName) {
+  public void setAuthorName(String authorName) {
     this.authorName = authorName;
   }
 

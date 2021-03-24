@@ -1,5 +1,7 @@
 package postsservice.domain;
 
+import java.util.Map;
+
 import org.springframework.data.annotation.Id;
 
 public class User {
@@ -7,17 +9,23 @@ public class User {
   private String _id;
   private String userName;
   private String authorName;
+  private String mainAccount;
   private String password;
   private String role;
 
-  public User() {
+  public User(Map<String, Object> userJson) {
+    this._id = userJson.get("_id").toString();
+    this.userName = userJson.get("userName").toString();
+    this.authorName = userJson.get("authorName").toString();
+    this.role = userJson.get("role").toString();
   }
 
-  public User(String userName, String password, String role) {
-    super();
-    this.userName = userName;
-    this.password = password;
-    this.role = role;
+  public String getMainAccount() {
+    return mainAccount;
+  }
+
+  public void setMainAccount(String mainAccount) {
+    this.mainAccount = mainAccount;
   }
 
   public String getId() {
@@ -59,4 +67,5 @@ public class User {
   public void setAuthorName(String authorName) {
     this.authorName = authorName;
   }
+
 }

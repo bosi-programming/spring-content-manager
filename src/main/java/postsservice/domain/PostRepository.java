@@ -8,11 +8,11 @@ import org.springframework.data.repository.query.Param;
 public interface PostRepository extends MongoRepository<Post, String> {
   List<Post> findByTitle(@Param("title") String title);
 
-  List<Post> findByAuthor(@Param("author") String author);
+  List<Post> findByAuthorName(@Param("authorName") String authorName);
 
   List<Post> findByMainAccount(@Param("mainAccount") String mainAccount);
 
   List<Post> findByTitleAndMainAccount(@Param("title") String title, @Param("mainAccount") String mainAccount);
 
-  List<Post> findByTitleAndAuthor(@Param("title") String title, @Param("Author") String author);
+  List<Post> findByTitleAndAuthorName(@Param("title") String title, @Param("AuthorName") String authorName);
 }

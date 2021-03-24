@@ -15,6 +15,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
 
+import postsservice.domain.User;
 import postsservice.service.VerifyTokenService;
 
 @Component
@@ -26,11 +27,12 @@ public class AuthenticationFilter extends GenericFilterBean {
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
       throws IOException, ServletException {
     ObjectMapper mapper = new ObjectMapper();
-    String userJson = verifyToken.verifyToken((HttpServletRequest) request);
+    String userString = verifyToken.verifyToken((HttpServletRequest) request);
 
-    Map<String, Object> user = mapper.readValue(userJson, Map.class);
+    Map<String, Object> userJson = mapper.readValue(userString, Map.class);
+    User user = new User(userJson);
 
-    System.out.println(user.get("userName"));
+    System.out.println(user.getUsername());
     request.setAttribute("user", user);
 
     filterChain.doFilter(request, response);
